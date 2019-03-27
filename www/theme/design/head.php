@@ -64,7 +64,7 @@ if($position3 == 'b_left'){
 
 
 // page_wrap start
-echo '<div id="page_wrap">';
+echo '<div id="page_wrap" style="display:">';
 // 헤드영억 파일 불러오기
 $head = explode('|',$head_area);
 for($i3=1; $i3<count($head); $i3++){

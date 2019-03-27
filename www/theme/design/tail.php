@@ -138,6 +138,17 @@ $chatFile = $fp = fopen(G5_THEME_PATH.'/act/chat_code.html', 'r');
 if($chatFile){
   include_once(G5_THEME_PATH."/act/chat_code.html");
 }
-
+?>
+<!--
+<div id="app">
+  <main-component></main-component>
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue-router"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="../app/routes/index.js"></script>
+<script src="../app/app.js"></script>
+-->
+<?php
 include_once(G5_THEME_PATH."/tail.sub.php");
 ?>

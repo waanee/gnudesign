@@ -12,6 +12,11 @@ if(G5_COMMUNITY_USE === false) {
     return;
 }
 
+
+if($vue == true){
+  include_once(G5_PATH.'/app.php');
+}else {
+
 include_once(G5_THEME_PATH.'/head.php');
 
 $sql1 = " select * from g5_content_block_set where name = 'mainpage' ";
@@ -34,4 +39,5 @@ for($i6=1; $i6<count($content); $i6++){
 }
 
 include_once(G5_THEME_PATH.'/tail.php');
+}
 ?>

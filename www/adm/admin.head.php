@@ -295,6 +295,7 @@ include_once(G5_ADMIN_PATH.'/design_admin/admin_theme_color.php');
                   if($menu['menu'.$key][0][3] == 'shop_config'){ $icon = 'cart'; }
                   if($menu['menu'.$key][0][3] == 'shop_stats'){ $icon = 'database'; }
                   if($menu['menu'.$key][0][3] == 'sms5'){ $icon = 'comments'; }
+                  if($menu['menu'.$key][0][3] == 'vue'){ $icon = 'file-edit'; }
                   ?>
                   <span uk-icon='icon: <?=$icon?>; ratio: 0.8' style="margin-right:10px;"></span>
                   <?php echo $button_title; ?>
