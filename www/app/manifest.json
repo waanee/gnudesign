@@ -1,0 +1,19 @@
+{
+    "short_name": "temamoa",
+    "name": "temamoa",
+    "icons": [{
+      "src": "./images/logoIcon.png",
+      "type": "image/png",
+      "sizes": "128x126"
+    },{
+      "src": "./images/logoIcon.png",
+      "type": "image/png",
+      "sizes": "152x152"
+    },{
+      "src": "./images/logoIcon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }],
+    "display": "fullscreen",
+    "start_url": "../app.php"
+  }

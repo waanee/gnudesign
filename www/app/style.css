@@ -1,0 +1,17 @@
+header {
+  background: #fff;
+  border-bottom:1px solid #e3e3e3;
+  margin:0px;
+}
+.main {
+  text-align: center;
+  padding:15px;
+}
+
+.content_wrap {
+  text-align: center;
+}
+
+.uk-navbar-container:not(.uk-navbar-transparent) {
+  background: transparent;
+}
