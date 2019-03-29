@@ -1,3 +1,6 @@
+<?php
+$title = "TEMAMOA";
+?>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -9,7 +12,7 @@
     <meta name="apple‐mobile‐web‐app‐capable" content="yes">
     <meta name="apple‐mobile‐web‐app‐status‐bar‐style" content="black">
 
-    <title>TEMAMOA APP</title>
+    <title><?=$title?></title>
     <!-- manifest -->
     <link rel="manifest" href="./app/manifest.json">
 
