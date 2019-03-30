@@ -1017,7 +1017,7 @@ ul.uk-nav-sub {
   color:#000;
 }
 .site-title a {
-  color:#000;
+  color:#000 !important;
 }
 
 .top-menu {
