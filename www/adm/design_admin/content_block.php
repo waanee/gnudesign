@@ -7,7 +7,7 @@ auth_check($auth[$sub_menu], 'r');
 if ($is_admin != 'super')
     alert('최고관리자만 접근 가능합니다.');
 */
-$g5['title'] = "컨텐츠 블럭";
+$g5['title'] = "컴포넌트 관리";
 include_once(G5_ADMIN_PATH.'/admin.head.php');
 
 
@@ -34,17 +34,17 @@ $result = sql_query($sql);
 
   <div class="local_desc01 local_desc">
     <p>
-        메인페이지를 구성하는 블럭을 생성 합니다.<br>
-        생성된 블럭은 관리자에서 수정가능 하며, 또는 웹에디터에서 FTP접속후 수정가능 합니다.
+        메인페이지를 구성하는 컴포넌트를 생성 합니다.<br>
+        생성된 컴포넌트는 관리자에서 수정가능 하며, 또는 웹에디터에서 FTP접속후 수정가능 합니다.
     </p>
   </div>
 
-    <h2 class="h2_frm">컨텐츠 블럭 생성</h2>
+    <h2 class="h2_frm">컴포넌트 생성</h2>
     <?php echo $pg_anchor ?>
 
     <div class="tbl_frm01 tbl_wrap">
       <table>
-        <caption>컨텐츠 블럭 생성</caption>
+        <caption>컴포넌트 생성</caption>
         <colgroup>
             <col class="grid_4">
             <col>
@@ -71,12 +71,12 @@ $result = sql_query($sql);
 
 
 
-    <h2 class="h2_frm">컨텐츠 블럭 가져오기</h2>
+    <h2 class="h2_frm">컴포넌트 가져오기</h2>
     <?php echo $pg_anchor ?>
 
     <div class="tbl_frm01 tbl_wrap">
       <table>
-        <caption>컨텐츠 블럭 가져오기</caption>
+        <caption>컴포넌트 가져오기</caption>
         <colgroup>
             <col class="grid_4">
             <col>
@@ -88,7 +88,7 @@ $result = sql_query($sql);
         <tr>
             <th scope="row">파일 업로드</th>
             <td>
-                <span class="frm_info">따로 만들어지거나, 블럭파일을 업로드 합니다. 업로드 파일은 파일명.zip 만 가능 합니다.</span>
+                <span class="frm_info">따로 만들어지거나, 컴포넌트 파일을 업로드 합니다. 업로드 파일은 파일명.zip 만 가능 합니다.</span>
                 <input type="file" name="file_upload[]" id="file_upload" multiple="multiple" style="float:left;">
                 <input type="submit" value="파일업로드" name="act_button" class="btn_submit btn" accesskey="s">
             </td>
@@ -182,7 +182,7 @@ $result = sql_query($sql);
     </div>
 
 
-    <h2 class="h2_frm">생성된 블럭 (<?=$total_count?>)</h2>
+    <h2 class="h2_frm">생성된 컴포넌트 (<?=$total_count?>)</h2>
     <div class="tbl_frm01 tbl_wrap">
 
     <?php
@@ -232,7 +232,7 @@ $result = sql_query($sql);
 
 
 <div class="btn_fixed_top btn_confirm">
-  <a href="http://temamoa.com/bbs/board.php?bo_table=themes" target="_blank" class="btn btn_submit">컨텐츠블럭 테마샵</a>
+  <a href="http://temamoa.com/bbs/board.php?bo_table=themes" target="_blank" class="btn btn_submit">컴포넌트 테마샵</a>
 </div>
 
 

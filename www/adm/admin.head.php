@@ -207,7 +207,7 @@ include_once(G5_ADMIN_PATH.'/design_admin/admin_theme_color.php');
       <div class="uk-offcanvas-bar uk-flex uk-flex-column" style="overflow:hidden;">
         <div style="overflow-y:auto; width:280px;">
 
-          <div class="side-profile">
+          <div class="side-profile" style="display:none;">
             <div class="inner" onclick="location.href='<?=G5_ADMIN_URL?>'">
               <?php
               $logo_img3 = G5_DATA_PATH."/common/logo_img3";
@@ -219,7 +219,9 @@ include_once(G5_ADMIN_PATH.'/design_admin/admin_theme_color.php');
           </div>
 
           <div class="site-title">
-            <?=$config['cf_title']?>
+            <a href="/adm">
+              <?=$config['cf_title']?>
+            </a>
           </div>
 
           <div class="top-menu">
@@ -350,15 +352,7 @@ include_once(G5_ADMIN_PATH.'/design_admin/admin_theme_color.php');
             <div class="uk-navbar-center">
               <div class="logo-center">
                 <a class="uk-navbar-item uk-logo" href="<?php echo G5_ADMIN_URL;?>">
-                  <?php
-                  $logo_img = G5_DATA_PATH."/common/logo_img";
-                  if (file_exists($logo_img))
-                  {
-                  ?>
-                    <img src="<?php echo G5_URL;?>/data/common/logo_img" />
-                  <?php }else{
-                        echo 'ADMINATOR';
-                  }?>
+                  ADMINATOR
                 </a>
               </div>
 
