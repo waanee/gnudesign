@@ -308,7 +308,7 @@ table tr:nth-child(2n+1) {
 .uk-container section {
   padding:30px;
   background: #fff;
-  border-radius: 5px;
+  border-radius: 10px;
   margin:40px 0px;
   box-shadow: 0px 0px 50px 1px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: 0px 0px 50px 1px rgba(0, 0, 0, 0.05);
