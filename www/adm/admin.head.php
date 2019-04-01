@@ -120,7 +120,6 @@ echo '<meta name="viewport" content="width=device-width,initial-scale=1.0,minimu
 <script src="<?php echo G5_ADMIN_URL ?>/js/uikit.min.js"></script>
 <script src="<?php echo G5_ADMIN_URL ?>/js/uikit-icons.min.js"></script>
 
-
 <?php
 //관리자 테마 관련 스타일가져오기
 include_once(G5_ADMIN_PATH.'/design_admin/admin_theme_color.php');
