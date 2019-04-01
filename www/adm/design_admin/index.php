@@ -51,6 +51,7 @@ $result = sql_query($sql);
 
 $colspan = 12;
 
+
 //get_visit_info('2018-10-01', $to_date='');
 ?>
 
