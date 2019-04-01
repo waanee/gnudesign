@@ -1,12 +1,12 @@
 <?php
 $admin_theme = $_COOKIE['admin-color-theme'];
 
-if($admin_theme == 'color-theme-01'){ unset($_COOKIE["admin-color-theme"]);}
-if($admin_theme == 'color-theme-02'){ $theme_bg = '#373737'; $menu_font_color = '#a1a1a1';}
-if($admin_theme == 'color-theme-03'){ $theme_bg = '#d01395'; $menu_font_color = '#e8e8e8';}
-if($admin_theme == 'color-theme-04'){ $theme_bg = '#916EFC'; $menu_font_color = '#ececec';}
-if($admin_theme == 'color-theme-05'){ $theme_bg = '#026E94'; $menu_font_color = '#fff';}
-if($admin_theme == 'color-theme-06'){ $theme_bg = '#ec4500'; $menu_font_color = '#e3e3e3';}
+if($admin_theme == 'color-theme-01'){ unset($_COOKIE["admin-color-theme"]);} else
+if($admin_theme == 'color-theme-02'){ $theme_bg = '#373737'; $menu_font_color = '#a1a1a1';} else
+if($admin_theme == 'color-theme-03'){ $theme_bg = '#d01395'; $menu_font_color = '#e8e8e8';} else
+if($admin_theme == 'color-theme-04'){ $theme_bg = '#916EFC'; $menu_font_color = '#ececec';} else
+if($admin_theme == 'color-theme-05'){ $theme_bg = '#026E94'; $menu_font_color = '#fff';} else
+if($admin_theme == 'color-theme-06'){ $theme_bg = '#ec4500'; $menu_font_color = '#e3e3e3';} 
 
 if($admin_theme){
   $uk_offcanvas_bar = $theme_bg;

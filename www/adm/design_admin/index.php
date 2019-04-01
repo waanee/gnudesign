@@ -71,7 +71,7 @@ $colspan = 12;
         <div class="uk-card uk-card-default uk-text-center uk-card-body admin-main">
           <div style="text-align:left;"><img src="./design_admin/img/decore-left.png" style="height:80px;"></div>
           <!--<span uk-icon="icon: cog; ratio: 1.6" class="main-icon"></span>-->
-          <h2><?=$config['cf_title']?> 관리자 페이지</h2>
+          <h2><?=$config['cf_title']?> adminator</h2>
           <p>관리자페이지에 오신것을 환영 합니다.</p>
           <p>페이지의 디자인및, 게시판 설정을 관리 합니다.</p>
         </div>
@@ -105,10 +105,10 @@ $colspan = 12;
 
 
     <div>
-        <div class="uk-card uk-card-default uk-card-body">Item</div>
+        <div class="uk-card uk-card-default uk-card-body">Empty Item</div>
     </div>
     <div>
-        <div class="uk-card uk-card-default uk-card-body">Item</div>
+        <div class="uk-card uk-card-default uk-card-body">Empty Item</div>
     </div>
 
 </div>

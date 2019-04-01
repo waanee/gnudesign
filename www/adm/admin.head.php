@@ -319,8 +319,8 @@ include_once(G5_ADMIN_PATH.'/design_admin/admin_theme_color.php');
 
 
     <!--// header //-->
-    <div uk-sticky="sel-target: .uk-navbar-container; " style="background:#f8f8f8;">
-      <div class="header">
+    <div uk-sticky="sel-target: .uk-navbar-container; " class="header">
+      <div class="">
         <div class="uk-container">
           <nav class="uk-navbar-container uk-navbar header_bg" uk-navbar="dropbar: true;">
             <div class="test-overlay uk-navbar-left" aria-hidden="false" style="">
