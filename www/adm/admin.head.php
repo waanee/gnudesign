@@ -202,38 +202,35 @@ include_once(G5_ADMIN_PATH.'/design_admin/admin_theme_color.php');
   <a id="target" class="uk-button scroll-top" href="#top" uk-scroll=""><span uk-icon="icon:chevron-up"></span></a>
 
 
-  <div class="uk-offcanvas-content" style="background:#F5F4F9;">
+  <div class="uk-offcanvas-content">
     <div id="offcanvas-push" uk-offcanvas="mode: slide; overlay:true " class="uk-offcanvas uk-open">
       <div class="uk-offcanvas-bar uk-flex uk-flex-column" style="overflow:hidden;">
         <div style="overflow-y:auto; width:280px;">
 
-          <div class="side-profile" style="display:none;">
-            <div class="inner" onclick="location.href='<?=G5_ADMIN_URL?>'">
+          <?php
+          if(!$theme_bg){
+            $theme_bg = '#fff';
+          }
+          ?>
+          <div style="background:<?=$theme_bg?> !important; padding-bottom:40px;" uk-sticky>
+            <div class="site-title">
+              <a href="/adm">
+                <?=$config['cf_title']?>
+              </a>
+            </div>
+
+            <div class="top-menu">
               <?php
-              $logo_img3 = G5_DATA_PATH."/common/logo_img3";
-              if (file_exists($logo_img3)){
+              echo $is_youngcart;
               ?>
-              <img src="<?php echo G5_DATA_URL; ?>/common/logo_img3" style="width:100%;">
-              <?php }?>
+              <a href="<?php echo G5_URL ?>/" target="_blank" uk-icon="icon: home" uk-tooltip="title: 사이트 바로가기; pos: bottom"></a>
+
+              <a href="<?php echo G5_BBS_URL ?>/logout.php" uk-icon="icon: sign-out" style="padding-left:15px;" uk-tooltip="title: 로그아웃; pos: bottom"></a>
             </div>
           </div>
 
-          <div class="site-title">
-            <a href="/adm">
-              <?=$config['cf_title']?>
-            </a>
-          </div>
 
-          <div class="top-menu">
-            <?php
-            echo $is_youngcart;
-            ?>
-            <a href="<?php echo G5_URL ?>/" target="_blank" uk-icon="icon: home" uk-tooltip="title: 사이트 바로가기; pos: bottom"></a>
-
-            <a href="<?php echo G5_BBS_URL ?>/logout.php" uk-icon="icon: sign-out" style="padding-left:15px;" uk-tooltip="title: 로그아웃; pos: bottom"></a>
-          </div>
-
-          <ul class="uk-nav-default uk-nav-parent-icon" uk-nav style="margin-top:30px;">
+          <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
 
             <?php
             // 새로추가된 관리자메뉴 출력
@@ -267,7 +264,6 @@ include_once(G5_ADMIN_PATH.'/design_admin/admin_theme_color.php');
             </li>
             <?php }?>
 
-            <div style="<?=$admin_underLine?> width:90%; margin:0 auto; padding:5px 0px 5px; margin-bottom:10px;"></div>
             <?php
                     $jj = 1;
                     foreach($amenu as $key=>$value) {
@@ -300,7 +296,7 @@ include_once(G5_ADMIN_PATH.'/design_admin/admin_theme_color.php');
                   if($menu['menu'.$key][0][3] == 'vue'){ $icon = 'file-edit'; }
                   if($menu['menu'.$key][0][3] == 'tistory'){ $icon = 'pencil'; }
                   ?>
-                  <span uk-icon='icon: <?=$icon?>; ratio: 1.1' style="margin-right:10px; color:#000 !important;"></span>
+                  <span uk-icon='icon: <?=$icon?>; ratio: 1.1' style="margin-right:10px;"></span>
                   <?php echo $button_title; ?>
                 </a>
                 <ul class="uk-nav-sub">
@@ -323,49 +319,51 @@ include_once(G5_ADMIN_PATH.'/design_admin/admin_theme_color.php');
 
 
     <!--// header //-->
-    <div uk-sticky="sel-target: .uk-navbar-container; " class="header">
-      <div class="uk-container">
-        <nav class="uk-navbar-container uk-navbar header_bg" uk-navbar="dropbar: true;">
-          <div class="test-overlay uk-navbar-left" aria-hidden="false" style="">
+    <div uk-sticky="sel-target: .uk-navbar-container; " style="background:#f8f8f8;">
+      <div class="header">
+        <div class="uk-container">
+          <nav class="uk-navbar-container uk-navbar header_bg" uk-navbar="dropbar: true;">
+            <div class="test-overlay uk-navbar-left" aria-hidden="false" style="">
 
-            <div class="uk-navbar-left">
-              <?php if($_SERVER['REQUEST_URI']!='/') {?>
-              <a href="#offcanvas-push" uk-toggle="" uk-navbar-toggle-icon="" class="uk-navbar-item uk-icon-link back-buttom"></a>
-              <?php }?>
-              <div class="logo-left">
-                <div class="hide-menu" id="hide-menu"><span uk-icon="icon:menu"></span></div>
+              <div class="uk-navbar-left">
+                <?php if($_SERVER['REQUEST_URI']!='/') {?>
+                <a href="#offcanvas-push" uk-toggle="" uk-navbar-toggle-icon="" class="uk-navbar-item uk-icon-link back-buttom"></a>
+                <?php }?>
+                <div class="logo-left">
+                  <div class="hide-menu" id="hide-menu"><span uk-icon="icon:menu"></span></div>
 
-                <?php
-                if($g5['title'] == '관리자메인'){
-                  $pp = '';
-                }else{
-                  $pp = '<li><span>'.$g5['title'].'</span></li>';
-                }
-                ?>
-                <ul class="uk-breadcrumb" style="float:left; padding-left:30px;">
-                    <li><a href="<?=G5_ADMIN_URL?>">관리자메인</a></li>
-                    <?=$pp?>
-                </ul>
+                  <?php
+                  if($g5['title'] == '관리자메인'){
+                    $pp = '';
+                  }else{
+                    $pp = '<li><span>'.$g5['title'].'</span></li>';
+                  }
+                  ?>
+                  <ul class="uk-breadcrumb" style="float:left; padding-left:30px;">
+                      <li><a href="<?=G5_ADMIN_URL?>">관리자메인</a></li>
+                      <?=$pp?>
+                  </ul>
+
+                </div>
+              </div>
+
+              <div class="uk-navbar-center">
+                <div class="logo-center">
+                  <a class="uk-navbar-item uk-logo" href="<?php echo G5_ADMIN_URL;?>">
+                    ADMINATOR
+                  </a>
+                </div>
 
               </div>
             </div>
 
-            <div class="uk-navbar-center">
-              <div class="logo-center">
-                <a class="uk-navbar-item uk-logo" href="<?php echo G5_ADMIN_URL;?>">
-                  ADMINATOR
-                </a>
-              </div>
-
+            <div class="test-overlay uk-navbar-right" aria-hidden="false" style="">
+              <!--<a href="<?php echo G5_BBS_URL ?>/logout.php" class="uk-navbar-item uk-icon-link mobile-show" uk-icon="icon: sign-out" style="padding-left:15px;" uk-tooltip="title: 로그아웃; pos: bottom"></a>-->
             </div>
-          </div>
 
-          <div class="test-overlay uk-navbar-right" aria-hidden="false" style="">
-            <!--<a href="<?php echo G5_BBS_URL ?>/logout.php" class="uk-navbar-item uk-icon-link mobile-show" uk-icon="icon: sign-out" style="padding-left:15px;" uk-tooltip="title: 로그아웃; pos: bottom"></a>-->
-          </div>
+          </nav>
 
-        </nav>
-
+        </div>
       </div>
     </div>
     <!--// header-end //-->

@@ -10,6 +10,10 @@ if(function_exists('social_log_file_delete')){
 $g5['title'] = '관리자';
 include_once ('././admin.head.php');
 
+include_once(G5_LIB_PATH.'/latest.lib.php');
+include_once(G5_LIB_PATH.'/visit.lib.php');
+include_once(G5_LIB_PATH.'/connect.lib.php');
+
 $new_member_rows = 5;
 $new_point_rows = 5;
 $new_write_rows = 5;
@@ -50,7 +54,7 @@ $colspan = 12;
 //get_visit_info('2018-10-01', $to_date='');
 ?>
 
-<!--
+<!---
 <section>
     <h2>사이트 접속통계</h2>
     <div class="local_desc02 local_desc">
@@ -62,92 +66,56 @@ $colspan = 12;
 </section>
 -->
 
-
-
-<section>
-    <h2>신규가입회원 <?php echo $new_member_rows ?>건 목록</h2>
-    <div class="local_desc02 local_desc">
-        총회원수 <?php echo number_format($total_count) ?>명 중 차단 <?php echo number_format($intercept_count) ?>명, 탈퇴 : <?php echo number_format($leave_count) ?>명
+<div class="uk-child-width-1-2@m" uk-grid>
+    <div>
+        <div class="uk-card uk-card-default uk-text-center uk-card-body admin-main">
+          <div style="text-align:left;"><img src="./design_admin/img/decore-left.png" style="height:80px;"></div>
+          <!--<span uk-icon="icon: cog; ratio: 1.6" class="main-icon"></span>-->
+          <h2><?=$config['cf_title']?> 관리자 페이지</h2>
+          <p>관리자페이지에 오신것을 환영 합니다.</p>
+          <p>페이지의 디자인및, 게시판 설정을 관리 합니다.</p>
+        </div>
+    </div>
+    <div>
+      <div class="uk-child-width-1-2@m" uk-grid>
+        <div>
+            <div class="uk-card uk-card-default uk-text-right uk-card-body user">
+              <h2 style="color:rgb(28, 126, 196)">가입회원 수</h2>
+              <span uk-icon="icon: user; ratio: 1.4" class="user-icon"></span>
+              <span class="num"><?php echo number_format($total_count) ?></span><br>
+              차단 <?php echo number_format($intercept_count) ?>명<br> 탈퇴 <?php echo number_format($leave_count) ?>명
+              <div class="uk-card-footer">
+                  <a href="./member_list.php" class="uk-button uk-button-text">Read more</a>
+              </div>
+            </div>
+        </div>
+        <div>
+            <div class="uk-card uk-card-default uk-text-right uk-card-body user">
+              <h2 style="color:rgb(249, 151, 48)">오늘 방문자 수</h2>
+              <span uk-icon="icon: users; ratio: 1.4" class="user-icon"></span>
+              <?=visit('theme/admin');?>
+              <div class="uk-card-footer">
+                  <a href="./visit_list.php" class="uk-button uk-button-text">Read more</a>
+              </div>
+            </div>
+        </div>
+      </div>
     </div>
 
-    <div class="tbl_head01 tbl_wrap">
-        <table>
-        <caption>신규가입회원</caption>
-        <thead>
-        <tr>
-            <th scope="col">회원아이디</th>
-            <th scope="col">이름</th>
-            <th scope="col">닉네임</th>
-            <th scope="col">권한</th>
-            <th scope="col">포인트</th>
-            <th scope="col">수신</th>
-            <th scope="col">공개</th>
-            <th scope="col">인증</th>
-            <th scope="col">차단</th>
-            <th scope="col">그룹</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php
-        for ($i=0; $row=sql_fetch_array($result); $i++)
-        {
-            // 접근가능한 그룹수
-            $sql2 = " select count(*) as cnt from {$g5['group_member_table']} where mb_id = '{$row['mb_id']}' ";
-            $row2 = sql_fetch($sql2);
-            $group = "";
-            if ($row2['cnt'])
-                $group = '<a href="./boardgroupmember_form.php?mb_id='.$row['mb_id'].'">'.$row2['cnt'].'</a>';
 
-            if ($is_admin == 'group')
-            {
-                $s_mod = '';
-                $s_del = '';
-            }
-            else
-            {
-                $s_mod = '<a href="./member_form.php?$qstr&amp;w=u&amp;mb_id='.$row['mb_id'].'">수정</a>';
-                $s_del = '<a href="./member_delete.php?'.$qstr.'&amp;w=d&amp;mb_id='.$row['mb_id'].'&amp;url='.$_SERVER['SCRIPT_NAME'].'" onclick="return delete_confirm(this);">삭제</a>';
-            }
-            $s_grp = '<a href="./boardgroupmember_form.php?mb_id='.$row['mb_id'].'">그룹</a>';
 
-            $leave_date = $row['mb_leave_date'] ? $row['mb_leave_date'] : date("Ymd", G5_SERVER_TIME);
-            $intercept_date = $row['mb_intercept_date'] ? $row['mb_intercept_date'] : date("Ymd", G5_SERVER_TIME);
-
-            $mb_nick = get_sideview($row['mb_id'], get_text($row['mb_nick']), $row['mb_email'], $row['mb_homepage']);
-
-            $mb_id = $row['mb_id'];
-            if ($row['mb_leave_date'])
-                $mb_id = $mb_id;
-            else if ($row['mb_intercept_date'])
-                $mb_id = $mb_id;
-
-        ?>
-        <tr>
-            <td class="td_mbid"><?php echo $mb_id ?></td>
-            <td class="td_mbname"><?php echo get_text($row['mb_name']); ?></td>
-            <td class="td_mbname sv_use"><div><?php echo $mb_nick ?></div></td>
-            <td class="td_num"><?php echo $row['mb_level'] ?></td>
-            <td><a href="./point_list.php?sfl=mb_id&amp;stx=<?php echo $row['mb_id'] ?>"><?php echo number_format($row['mb_point']) ?></a></td>
-            <td class="td_boolean"><?php echo $row['mb_mailling']?'예':'아니오'; ?></td>
-            <td class="td_boolean"><?php echo $row['mb_open']?'예':'아니오'; ?></td>
-            <td class="td_boolean"><?php echo preg_match('/[1-9]/', $row['mb_email_certify'])?'예':'아니오'; ?></td>
-            <td class="td_boolean"><?php echo $row['mb_intercept_date']?'예':'아니오'; ?></td>
-            <td class="td_category"><?php echo $group ?></td>
-        </tr>
-        <?php
-            }
-        if ($i == 0)
-            echo '<tr><td colspan="'.$colspan.'" class="empty_table">자료가 없습니다.</td></tr>';
-        ?>
-        </tbody>
-        </table>
+    <div>
+        <div class="uk-card uk-card-default uk-card-body">Item</div>
+    </div>
+    <div>
+        <div class="uk-card uk-card-default uk-card-body">Item</div>
     </div>
 
-    <div class="btn_list03 btn_list">
-        <a href="./member_list.php">회원 전체보기</a>
-    </div>
+</div>
 
-</section>
+<!-- sample img -->
+<img src="./design_admin/img/main.png" alt=""/ style="display:none">
+
 
 <?php
 $sql_common = " from {$g5['board_new_table']} a, {$g5['board_table']} b, {$g5['group_table']} c where a.bo_table = b.bo_table and b.gr_id = c.gr_id ";

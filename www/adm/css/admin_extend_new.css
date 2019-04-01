@@ -49,8 +49,8 @@ table tr:nth-child(2n+1) {
   box-shadow: 0 4px 20px 0 rgba(0,0,0,.05);
   -moz-box-shadow: 0 4px 20px 0 rgba(0,0,0,.05);
   -webkit-box-shadow: 0 4px 20px 0 rgba(0,0,0,.05);
-  margin:20px 40px !important;
-  border-radius: 10px;
+  margin:20px 40px 0px !important;
+
 }
 
 @media screen and (max-width: 767px) {
@@ -429,7 +429,6 @@ table tr:nth-child(2n+1) {
 
 .header {
   background: #fff !important;
-  border-bottom: 1px solid #d3d3d3;
   height:61px;
 }
 
@@ -691,6 +690,8 @@ table tr:nth-child(2n+1) {
 
 .uk-card-body {
   position: relative;
+  padding:20px;
+  border-radius: 5px;
 }
 
 
@@ -1011,7 +1012,7 @@ ul.uk-nav-sub {
 }
 .site-title {
   text-align: center; width:260px;
-  padding:40px 0px;
+  padding:30px 0px;
   font-size: 20px;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -1065,4 +1066,38 @@ ul.uk-nav-sub {
 
 .uk-modal-title {
   font-size: 16px; font-weight: 700;
+}
+
+
+.uk-card-footer {
+  padding:0px;
+  padding-top:15px;
+  text-align: center;
+}
+
+.admin-main {
+  background: rgb(129, 119, 246);
+  color:#fff;
+  padding:0px 0px 20px 0px;
+}
+.admin-main h2{
+  color:#fff;
+  margin:20px;
+}
+.admin-main p{
+  margin: 3px 0px;
+}
+.admin-main .main-icon {
+  background: rgb(107, 86, 208);
+  padding: 10px;
+  border-radius: 50px;
+}
+
+.user .num {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.user .user-icon {
+  float: left;
 }

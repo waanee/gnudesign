@@ -51,10 +51,12 @@ ul.uk-nav-sub {
 .uk-nav-sub ul {
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3) inset,0px 0px 0px rgba(200,200,200,0.2);
 }
+/*
 .header {background:<?=$theme_bg?> !important; <?php if($admin_theme!='color-theme-01'){echo 'border-bottom:0px;';}?> }
 .header a {color:<?=$menu_font_color?> !important;}
 .uk-breadcrumb>:last-child>* {color:<?=$menu_font_color?> !important;}
 
 .hide-menu{background:#000; opacity: 0.5;color:<?=$menu_font_color?>}
+*/
 </style>
 <?php }?>
