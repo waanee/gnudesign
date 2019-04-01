@@ -49,6 +49,7 @@ $intercept_count = $row['cnt'];
 $sql = " select * {$sql_common} {$sql_search} {$sql_order} limit {$new_member_rows} ";
 $result = sql_query($sql);
 
+
 $colspan = 12;
 
 
