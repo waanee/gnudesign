@@ -38,7 +38,8 @@ fclose($file_js);
 
 $common_dir = G5_THEME_PATH."/template/".$name.'/images';
 if(!is_dir($common_dir)){
-  mkdir($common_dir);
+  @mkdir($common_dir,0777);
+  @chmod($common_dir,0777);
 }
 
 // 이미지 삭제

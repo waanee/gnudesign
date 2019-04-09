@@ -18,7 +18,8 @@ if ($_POST['act_button'] == "파일업로드") {
   // 초기폴더 생성
   $common_dir = G5_THEME_PATH."/template/";
   if(!is_dir($common_dir)){
-    mkdir($common_dir);
+    @mkdir($common_dir,0777);
+    @chmod($common_dir,0777);
   }
 
   if($_FILES['file_upload']['name']){
@@ -35,8 +36,10 @@ if ($_POST['act_button'] == "파일업로드") {
       // 폴더 색성
       $common_dir = G5_THEME_PATH."/template/".$file_name;
       if(!is_dir($common_dir)){
-        mkdir($common_dir);
-        mkdir($common_dir.'/images');
+        @mkdir($common_dir,0777);
+        @chmod($common_dir,0777);
+        @mkdir($common_dir.'/images',0777);
+        @chmod($common_dir.'/images',0777);
       }
       // 압축풀 경로지정
       $zip_dir = G5_THEME_PATH."/template/".$file_name;
@@ -134,7 +137,8 @@ if ($_POST['act_button'] == "생성") {
   // 초기폳더생성
   $common_dir = G5_THEME_PATH."/template/";
   if(!is_dir($common_dir)){
-    mkdir($common_dir);
+    @mkdir($common_dir,0777);
+    @chmod($common_dir,0777);
   }
 
   if($_POST[file_name]){
@@ -142,15 +146,18 @@ if ($_POST['act_button'] == "생성") {
   // 블럭파일 폴더 생성
   $common_dir2 = G5_THEME_PATH."/template/".$_POST[file_name]."/";
   if(!is_dir($common_dir2)){
-    mkdir($common_dir2);
+    @mkdir($common_dir2,0777);
+    @chmod($common_dir2,0777);
   }
   $common_dir3 = G5_THEME_PATH."/template/".$_POST[file_name]."/images/";
   if(!is_dir($common_dir3)){
-    mkdir($common_dir3);
+    @mkdir($common_dir3,0777);
+    @chmod($common_dir3,0777);
   }
 
   // html 파일 생성
   $file1 = fopen($common_dir2."index.html","w");
+  @chmod($common_dir2."index.html", 0777);
   fwrite($file1, '<?php
 add_stylesheet("<link rel=\'stylesheet\' href=\'".G5_THEME_URL."/template/'.$_POST[file_name].'/style.css\'>", 0);
 ?>
@@ -166,6 +173,7 @@ add_stylesheet("<link rel=\'stylesheet\' href=\'".G5_THEME_URL."/template/'.$_PO
 
   // css 파일 생성
   $file2 = fopen($common_dir2."style.css","w");
+  @chmod($common_dir2."style.css", 0777);
   fwrite($file2, '/* 모든 스타일은 css 충돌방지를 위해 .'.$_POST[file_name].'을 기준으로 작성 하시면 됩니다. 예) .'.$_POST[file_name].' .box {} */
   .'.$_POST[file_name].'{}
   ');
@@ -173,6 +181,7 @@ add_stylesheet("<link rel=\'stylesheet\' href=\'".G5_THEME_URL."/template/'.$_PO
 
   // js 파일 생성
   $file3 = fopen($common_dir2."script.js","w");
+  @chmod($common_dir2."script.js", 0777);
   fwrite($file3, '/* '.$_POST[file_name].'의 js 파일 입니다. */');
   fclose($file3);
 
