@@ -171,6 +171,28 @@ add_stylesheet("<link rel=\'stylesheet\' href=\'".G5_THEME_URL."/template/'.$_PO
   ');
   fclose($file1);
 
+
+  // app components 파일 생성
+  $app_dir = G5_PATH."/app/components/".$_POST[file_name];
+  if(!is_dir($app_dir)){
+    @mkdir($app_dir,0777);
+    @chmod(G5_PATH."/app/components/",0777);
+    @chmod($app_dir,0777);
+  }
+  $file1_app = fopen($app_dir.'/index.js','w');
+  @chmod($app_dir."/index.js", 0777);
+  fwrite($file1_app, '
+export default{
+  template:`
+<div class="'.$_POST[file_name].'">
+tes
+</div>
+`
+}
+  ');
+  fclose($file1_app);
+
+
   // css 파일 생성
   $file2 = fopen($common_dir2."style.css","w");
   @chmod($common_dir2."style.css", 0777);
@@ -233,6 +255,11 @@ if($_GET['w'] == 'd'){
 
   @rmdir($del_dir.'/images');
   @rmdir($del_dir);
+
+  // app components 파일 삭제
+  $del_dir_app = G5_PATH.'/app/components/'.$_GET['file_name'];
+  @unlink($del_dir_app.'/index.js');
+  @rmdir($del_dir_app);
 
 }
 

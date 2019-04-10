@@ -21,6 +21,18 @@ $js_file_str = $_POST['file_js'];
 $js_file_str_re = str_replace('</ textarea>','</textarea>',$js_file_str);
 $js_file = stripslashes($js_file_str_re);
 
+$app_file_str = $_POST['file_html'];
+$app_file_re = str_replace('</ textarea>','</textarea>',$app_file_str);
+$app_file_re = str_replace('<!-- 내용시작 -->',' ',$app_file_re);
+$app_file_re = str_replace('<!-- 내용끝 -->',' ',$app_file_re);
+$app_file_re = str_replace('<?php',' ',$app_file_re);
+$app_file_re = str_replace('?>',' ',$app_file_re);
+
+$app_file = stripslashes($app_file_re);
+$app_file = str_replace('<script src="<?=G5_THEME_URL?>/template','',$app_file);
+$app_file = str_replace('add_stylesheet("<link rel=\'stylesheet\' href=\'".G5_THEME_URL."/template/'.$_POST['name'].'/style.css\'>", 0);','',$app_file);
+
+
 $common_dir = G5_THEME_PATH."/template/".$name."/";
 
 // 내용 업데이트
@@ -35,6 +47,20 @@ fclose($file_html);
 $file_js = fopen($common_dir."script.js","w");
 fwrite($file_js, $js_file);
 fclose($file_js);
+
+// app 내용 업데이트
+$app_dir = G5_PATH.'/app/components/'.$name.'/';
+$file_app = fopen($app_dir."index.js","w");
+fwrite($file_app, '
+export default{
+  template:`
+'.$app_file.'
+`
+}
+');
+fclose($file_app);
+
+
 
 $common_dir = G5_THEME_PATH."/template/".$name.'/images';
 if(!is_dir($common_dir)){
